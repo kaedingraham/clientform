@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <title>Client Form</title>
+</head>
+
+<body>
+<form id="clientForm" action="#" method="post">
+<div class="container">
+    <!-- Introduction section -->
+    <div class="text-center mb-5">
+        <img src="volkswagen-new-20213320-removebg-preview.png" alt="Company Logo">
+        <h1 class="small-break"> Welcome to NZM-TT-111 Online Shop Audit</h1>
+        <h4>Please fill out this online form for the Volkswagen Welding Expert Shop Audit. We need specific information to ensure that your repair
+            facility meets the standards set by </h4>
+            <h4>NZM-TT-111.
+        </h4>
+        <hr class="white-hr">
+    </div>
+
+    <!-- Contact Details -->
+    <div class="text-center mb-5">
+        <h5>Please fill out the below details</h5>
+        <h5>Ensure that this information is correct as we will need to be in contact with you:</h5>
+        <br>
+        <input type="text" name="first_name" class="form-control mb-3" placeholder="First Name" required>
+        <input type="text" name="last_name" class="form-control mb-3" placeholder="Last Name" required>
+        <input type="text" name="phone_number" class="form-control mb-3" placeholder="Phone Number" required>
+        <input type="text" name="email" class="form-control mb-3" placeholder="Email" required>
+        <input type="text" name="company" class="form-control mb-3" placeholder="Company" required>
+    </div>
+
+    <!-- Images section -->
+    <div class=" text-center mb-3">
+        <h5 class="small-break">As apart of the Volkswagen Expert Welding Qualification Audit Process, we need to ensure that your current mig/mag welder is approved by Volkswagen AG.</h5>
+        <h5>See below a list of approved welders for the Volkswagen Expert Qualification</h5>
+    </div>
+    <br>
+
+    <div class="d-flex justify-content-between mb-5">
+        <div class="single-image-container">
+            <img src="welder_1.png" alt="Image 1" width="150">
+            <p>VAS 821 001</p>
+        </div>
+        <div class="single-image-container">
+            <img src="welder_2.png" alt="Image 2" width="210">
+            <p>VAS 821003</p>
+        </div>
+        <div class="single-image-container">
+            <img src="welder_3.png" alt="Image 3" width="208">
+            <p>VAS 821005</p>
+        </div>
+    </div>
+
+    <!-- Upload section -->
+    <label class="custom-file-label">
+        Upload Your Welder
+        <input type="file" class="custom-file-input form-control-file mb-3" required>
+    </label>
+    <br>
+    <hr class="white-hr">
+    <!-- Image with text -->
+    <div class="text-center mb-5">
+        <h5>Sometihng about the wire</h5>
+        <br>
+        <img src="wire.png" alt="Image Description" width="300">
+    </div>
+
+    <!-- End screen -->
+    <div class="text-center">
+        <h5>Thank you for completing the...</h5>
+        <p>We will be in contact with you as soon as we can</p>
+        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+   document.querySelector("#clientForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        // Email validation
+        let email = document.querySelector("[name='email']").value;
+        if(!validateEmail(email)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+
+        // Save to local storage
+        localStorage.setItem("clientFormData", JSON.stringify({
+            firstName: document.querySelector("[name='first_name']").value,
+            lastName: document.querySelector("[name='last_name']").value,
+            phone: document.querySelector("[name='phone_number']").value,
+            email: email,
+            company: document.querySelector("[name='company']").value,
+            file: document.querySelector("[type='file']").value
+        }));
+
+        // Mock submission
+        alert("Thank you! Your data has been submitted.");
+        // Optionally, you can clear the form or redirect the user
+    });
+
+    function validateEmail(email) {
+        var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        return regex.test(email);
+    }
+</script>
+</form>
+</body>
+</html>
