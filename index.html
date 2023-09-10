@@ -74,6 +74,27 @@
         <img src="VAG1866___ASE40637200000-2-removebg-preview.png" alt="Image Description" width="300">
     </div>
 
+    <div class="text-center mb-5">
+    <h5>Do you have the wire?</h5>
+    <button id="btnYes" class="btn btn-primary btn-lg">Yes</button>
+    <button id="btnNo" class="btn btn-danger btn-lg">No</button>
+
+    <select id="quantityDropdown" class="form-control mb-3" style="display: none;">
+        <option value="">Select Quantity</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
+</div>
+
+
     <!-- End screen -->
     <div class="text-center">
         <h5>Thank you for completing the...</h5>
@@ -100,6 +121,15 @@
     let fileName = e.target.files[0].name; // get the filename from the input
     document.getElementById('fileLabel').textContent = fileName; // set the filename to the span
 });
+
+    document.getElementById("btnYes").addEventListener("click", function() {
+    document.getElementById("quantityDropdown").style.display = "none";
+});
+
+document.getElementById("btnNo").addEventListener("click", function() {
+    document.getElementById("quantityDropdown").style.display = "block";
+});
+
 
 function validateEmail(email) {
     var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
