@@ -108,54 +108,43 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  document.querySelector("#clientForm").addEventListener("submit", function(event) {
-    // Email validation
+ document.querySelector("#clientForm").addEventListener("submit", function(event) {
     let email = document.querySelector("[name='_replyto']").value;
     if(!validateEmail(email)) {
         alert("Please enter a valid email address.");
-        event.preventDefault();  // Prevent form submission if email is not valid
+        event.preventDefault();
         return;
     }
-    // Let the form submit naturally to Formspree
 });
 
-    document.querySelector('[name="uploaded_file"]').addEventListener('change', function(e) {
-    let fileName = e.target.files[0].name; // get the filename from the input
-    document.getElementById('fileLabel').textContent = fileName; // set the filename to the span
+document.querySelector('[name="uploaded_file"]').addEventListener('change', function(e) {
+    let fileName = e.target.files[0].name;
+    document.getElementById('fileLabel').textContent = fileName;
 });
 
-    document.getElementById("btnYes").addEventListener("click", function() {
-    document.getElementById("quantityDropdown").style.display = "none";
-});
-
-document.getElementById("btnNo").addEventListener("click", function() {
-    document.getElementById("quantityDropdown").style.display = "block";
-});
-
-    const btnYes = document.getElementById("btnYes");
+const btnYes = document.getElementById("btnYes");
 const btnNo = document.getElementById("btnNo");
 const quantityDropdown = document.getElementById("quantityDropdown");
 
-btnYes.addEventListener("click", function() {
+btnYes.addEventListener("click", function(event) {
+    event.preventDefault();
     quantityDropdown.style.display = "none";
-    
     btnYes.classList.add("active-btn");
     btnNo.classList.remove("active-btn");
 });
 
-btnNo.addEventListener("click", function() {
+btnNo.addEventListener("click", function(event) {
+    event.preventDefault();
     quantityDropdown.style.display = "block";
-    
     btnNo.classList.add("active-btn");
     btnYes.classList.remove("active-btn");
 });
-
-
 
 function validateEmail(email) {
     var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return regex.test(email);
 }
+
 
 </script>
 </form>
