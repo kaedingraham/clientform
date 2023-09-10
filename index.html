@@ -130,6 +130,25 @@ document.getElementById("btnNo").addEventListener("click", function() {
     document.getElementById("quantityDropdown").style.display = "block";
 });
 
+    const btnYes = document.getElementById("btnYes");
+const btnNo = document.getElementById("btnNo");
+const quantityDropdown = document.getElementById("quantityDropdown");
+
+btnYes.addEventListener("click", function() {
+    quantityDropdown.style.display = "none";
+    
+    btnYes.classList.add("active-btn");
+    btnNo.classList.remove("active-btn");
+});
+
+btnNo.addEventListener("click", function() {
+    quantityDropdown.style.display = "block";
+    
+    btnNo.classList.add("active-btn");
+    btnYes.classList.remove("active-btn");
+});
+
+
 
 function validateEmail(email) {
     var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
