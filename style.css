@@ -96,7 +96,7 @@ button:hover {
 
 .white-hr {
     border: 0;                       /* Removes default borders */
-    height: 3px;                     /* Sets the height of the line */
+    height: 2px;                     /* Sets the height of the line */
     background-color: black;         /* Changes the color to white */
 }
 
