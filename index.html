@@ -77,11 +77,8 @@
     </div>
 
     <div class="text-center mb-5">
-    <h5>Does Your Business Have This Welding Wire in Stock, if Not Select Quantity Here</h5>
-    <button id="btnYes" class="btn btn-primary btn-lg">Yes</button>
-    <button id="btnNo" class="btn btn-danger btn-lg">No</button>
-
-    <select id="quantityDropdown" class="form-control mb-3" style="display: none;">
+    <h5>Does Your Business Have This Welding Wire in Stock, if Not Select Quantity Here to Order</h5>
+    <select id="quantityDropdown" class="form-control mb-3" name="welding_wire_quantity">
         <option value="">Select Quantity</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -108,44 +105,26 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
- document.querySelector("#clientForm").addEventListener("submit", function(event) {
+document.querySelector("#clientForm").addEventListener("submit", function(event) {
+    // Email validation
     let email = document.querySelector("[name='_replyto']").value;
     if(!validateEmail(email)) {
         alert("Please enter a valid email address.");
-        event.preventDefault();
+        event.preventDefault();  // Prevent form submission if email is not valid
         return;
     }
+    // Let the form submit naturally to Formspree
 });
 
 document.querySelector('[name="uploaded_file"]').addEventListener('change', function(e) {
-    let fileName = e.target.files[0].name;
-    document.getElementById('fileLabel').textContent = fileName;
-});
-
-const btnYes = document.getElementById("btnYes");
-const btnNo = document.getElementById("btnNo");
-const quantityDropdown = document.getElementById("quantityDropdown");
-
-btnYes.addEventListener("click", function(event) {
-    event.preventDefault();
-    quantityDropdown.style.display = "none";
-    btnYes.classList.add("active-btn");
-    btnNo.classList.remove("active-btn");
-});
-
-btnNo.addEventListener("click", function(event) {
-    event.preventDefault();
-    quantityDropdown.style.display = "block";
-    btnNo.classList.add("active-btn");
-    btnYes.classList.remove("active-btn");
+    let fileName = e.target.files[0].name; // get the filename from the input
+    document.getElementById('fileLabel').textContent = fileName; // set the filename to the span
 });
 
 function validateEmail(email) {
     var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return regex.test(email);
 }
-
-
 </script>
 </form>
 </body>
